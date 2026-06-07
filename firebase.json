@@ -1,0 +1,37 @@
+{
+  "hosting": {
+    "site": "devper-api",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/api/um/**",
+        "run": {
+          "serviceId": "devper-um",
+          "region": "asia-southeast1"
+        }
+      },
+      {
+        "source": "/api/pharmacy/**",
+        "run": {
+          "serviceId": "pharmacy-api",
+          "region": "asia-southeast1"
+        }
+      },
+      {
+        "source": "/api/gold/**",
+        "run": {
+          "serviceId": "devper-gold",
+          "region": "asia-southeast1"
+        }
+      },
+      {
+        "source": "/health",
+        "run": {
+          "serviceId": "devper-um",
+          "region": "asia-southeast1"
+        }
+      }
+    ]
+  }
+}

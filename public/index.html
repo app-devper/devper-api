@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Devper API Gateway</title>
+    <style media="screen">
+      :root {
+        --bg: #0f172a;
+        --panel: #111827;
+        --border: #1f2937;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --accent-soft: rgba(56, 189, 248, 0.12);
+        --get: #22c55e;
+        --code-bg: #0b1220;
+      }
+      * { box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Thai", sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.55;
+      }
+      main {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 24px 80px;
+      }
+      header h1 {
+        font-size: 28px;
+        margin: 0 0 8px;
+        letter-spacing: -0.01em;
+      }
+      header p {
+        color: var(--muted);
+        margin: 0 0 32px;
+        font-size: 15px;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 32px 0 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+      .endpoint {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin-bottom: 12px;
+      }
+      .endpoint-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .method {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+      .path {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--text);
+      }
+      .service {
+        margin-left: auto;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .service code {
+        color: var(--accent);
+        background: transparent;
+        padding: 0;
+      }
+      .endpoint p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      code {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        background: var(--code-bg);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        overflow-x: auto;
+        font-size: 13px;
+      }
+      pre code {
+        background: transparent;
+        padding: 0;
+      }
+      footer {
+        margin-top: 48px;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+      }
+      a { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Devper API Gateway</h1>
+        <p>Firebase Hosting ทำหน้าที่ reverse proxy ไปยังบริการ Cloud Run ภูมิภาค <code>asia-southeast1</code></p>
+      </header>
+
+      <h2>Endpoints</h2>
+
+      <div class="endpoint">
+        <div class="endpoint-head">
+          <span class="method">ANY</span>
+          <span class="path">/api/um/**</span>
+          <span class="service">→ <code>devper-um</code></span>
+        </div>
+        <p>User Management API — ออก JWT (HS256) และจัดการ session/role ใช้ร่วมกับทุก service</p>
+      </div>
+
+      <div class="endpoint">
+        <div class="endpoint-head">
+          <span class="method">ANY</span>
+          <span class="path">/api/pharmacy/**</span>
+          <span class="service">→ <code>pharmacy-api</code></span>
+        </div>
+        <p>Pharmacy POS API — ขายยา, FEFO lot deduction, KHY compliance, multi-tenant ตาม <code>clientId</code></p>
+      </div>
+
+      <div class="endpoint">
+        <div class="endpoint-head">
+          <span class="method">GET</span>
+          <span class="path">/health</span>
+          <span class="service">→ <code>devper-um</code></span>
+        </div>
+        <p>Liveness probe</p>
+      </div>
+
+      <h2>Authentication</h2>
+      <p>ทุก request (ยกเว้น <code>/health</code> และ endpoint ของ um ที่เปิดสาธารณะ) ต้องแนบ header:</p>
+      <pre><code>Authorization: Bearer &lt;JWT ที่ออกโดย /api/um&gt;</code></pre>
+
+      <h2>ตัวอย่างการเรียก</h2>
+      <pre><code>curl -X POST https://devper-api.web.app/api/um/v1/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"...","password":"..."}'
+
+curl https://devper-api.web.app/api/pharmacy/... \
+  -H 'Authorization: Bearer &lt;token&gt;'</code></pre>
+
+      <footer>
+        Devper API Gateway · Firebase Hosting + Cloud Run
+      </footer>
+    </main>
+  </body>
+</html>
