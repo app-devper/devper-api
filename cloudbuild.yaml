@@ -1,0 +1,13 @@
+steps:
+  - name: node:20
+    entrypoint: npx
+    args:
+      - firebase-tools
+      - deploy
+      - --only
+      - hosting:devper-api
+      - --project
+      - devperpos
+      - --non-interactive
+options:
+  logging: CLOUD_LOGGING_ONLY
