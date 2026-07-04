@@ -133,7 +133,7 @@
           <span class="path">/api/um/**</span>
           <span class="service">→ <code>devper-um</code></span>
         </div>
-        <p>User Management API — ออก JWT (HS256) และจัดการ session/role ใช้ร่วมกับทุก service</p>
+        <p>User Management API — ออก JWT (HS256), จัดการ session (list/revoke + keep-alive), SSO ticket exchange และ role (SUPER/ADMIN/MANAGER/USER) ใช้ร่วมกับทุก service</p>
       </div>
 
       <div class="endpoint">
@@ -147,11 +147,20 @@
 
       <div class="endpoint">
         <div class="endpoint-head">
+          <span class="method">ANY</span>
+          <span class="path">/api/gold/**</span>
+          <span class="service">→ <code>devper-gold</code></span>
+        </div>
+        <p>Gold Shop API — จัดการร้านทอง (base path <code>/api/gold/v1</code>), multi-tenant DB ตาม <code>clientId</code></p>
+      </div>
+
+      <div class="endpoint">
+        <div class="endpoint-head">
           <span class="method">GET</span>
           <span class="path">/health</span>
           <span class="service">→ <code>devper-um</code></span>
         </div>
-        <p>Liveness probe</p>
+        <p>Readiness probe — ตรวจการเชื่อมต่อ MongoDB และ Redis ตอบ <code>{"checks":{"mongo":"ok","redis":"ok"},"status":"ok"}</code></p>
       </div>
 
       <h2>Authentication</h2>
