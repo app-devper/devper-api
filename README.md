@@ -4,7 +4,7 @@ Firebase Hosting gateway ที่ทำหน้าที่ reverse proxy ไ�
 
 - Firebase project: `devperpos`
 - Hosting site: `devper-api`
-- URL: https://devper-api.web.app
+- URL: https://api.devper.app (custom domain via Cloudflare DNS; https://devper-api.web.app ยังใช้ได้)
 
 ## Routes
 
