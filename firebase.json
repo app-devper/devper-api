@@ -2,7 +2,11 @@
   "hosting": {
     "site": "devper-api",
     "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "/api/um/**",
@@ -22,6 +26,13 @@
         "source": "/api/gold/**",
         "run": {
           "serviceId": "devper-gold",
+          "region": "asia-southeast1"
+        }
+      },
+      {
+        "source": "/api/alert/**",
+        "run": {
+          "serviceId": "alert-api",
           "region": "asia-southeast1"
         }
       },
