@@ -13,9 +13,10 @@ Firebase Hosting gateway ที่ทำหน้าที่ reverse proxy ไ�
 | `/api/um/**` | `devper-um` |
 | `/api/pharmacy/**` | `pharmacy-api` |
 | `/api/gold/**` | `devper-gold` |
+| `/api/alert/**` | `alert-api` |
 | `/health` | `devper-um` |
 
-Service `devper-um` และ `pharmacy-api` deploy แยกจาก repo ของตัวเอง — repo นี้ deploy เฉพาะไฟล์ static ใน `public/` และ rewrite rules ใน `firebase.json`
+Service เหล่านี้ deploy แยกจาก repo ของตัวเอง — repo นี้ deploy เฉพาะไฟล์ static ใน `public/` และ rewrite rules ใน `firebase.json`
 
 ## Deploy
 
