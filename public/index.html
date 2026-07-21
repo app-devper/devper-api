@@ -156,6 +156,15 @@
 
       <div class="endpoint">
         <div class="endpoint-head">
+          <span class="method">ANY</span>
+          <span class="path">/api/alert/**</span>
+          <span class="service">→ <code>alert-api</code></span>
+        </div>
+        <p>Emergency Alert System — ลูกค้าเช็กอินผ่าน QR หรือลิงก์ตรง (<code>clientId</code>+<code>branchId</code>) ยืนยันด้วย OTP (หรือข้ามได้ถ้าเปิด <code>skipOtp</code>), พนักงานกดแจ้งเหตุจาก Emergency Dashboard ส่งผ่าน Web Push / SMS / LINE (LON) ตามที่ตั้งค่าไว้ต่อร้าน (base path <code>/api/alert/v1</code>), multi-tenant DB ตาม <code>clientId</code></p>
+      </div>
+
+      <div class="endpoint">
+        <div class="endpoint-head">
           <span class="method">GET</span>
           <span class="path">/health</span>
           <span class="service">→ <code>devper-um</code></span>
