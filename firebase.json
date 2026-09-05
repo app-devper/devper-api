@@ -16,6 +16,13 @@
         }
       },
       {
+        "source": "/api/pos/**",
+        "run": {
+          "serviceId": "pos-dev-api",
+          "region": "asia-southeast1"
+        }
+      },
+      {
         "source": "/api/pharmacy/**",
         "run": {
           "serviceId": "pharmacy-api",
