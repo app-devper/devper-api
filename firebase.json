@@ -44,6 +44,13 @@
         }
       },
       {
+        "source": "/api/snook/**",
+        "run": {
+          "serviceId": "snook-api",
+          "region": "asia-southeast1"
+        }
+      },
+      {
         "source": "/health",
         "run": {
           "serviceId": "devper-um",
