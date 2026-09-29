@@ -15,7 +15,10 @@ Firebase Hosting gateway ที่ทำหน้าที่ reverse proxy ไ�
 | `/api/pharmacy/**` | `pharmacy-api` |
 | `/api/gold/**` | `devper-gold` |
 | `/api/alert/**` | `alert-api` |
+| `/api/snook/**` | `snook-api` |
 | `/health` | `devper-um` |
+
+ทุก service ปัจจุบันต้องมี route ที่นี่ — service เปิด `GATEWAY_HOSTS` ได้หลังจาก client ของมันเรียกผ่าน gateway ได้แล้วเท่านั้น (เช่น host ของ System ใน UM ชี้มาที่ gateway)
 
 Service เหล่านี้ deploy แยกจาก repo ของตัวเอง — repo นี้ deploy เฉพาะไฟล์ static ใน `public/` และ rewrite rules ใน `firebase.json`
 
