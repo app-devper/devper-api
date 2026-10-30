@@ -55,7 +55,7 @@ curl https://api.devper.app/api/pos/health
 `pos-dev-api` อนุญาต origin ตามที่ตั้งไว้บน service เอง ไม่ใช่ที่ gateway:
 
 ```
-CORS_ALLOWED_ORIGINS=https://devper.web.app,https://devperpos.web.app,https://devper-pos.web.app
+CORS_ALLOWED_ORIGINS=https://devper.web.app,https://devperpos.web.app,https://devper-pos.web.app,https://devper-sm.web.app,https://pos.devper.app,https://sm.devper.app
 ```
 
 เพิ่ม front-end host ใหม่เมื่อไร ต้องอัปเดตค่านี้บน Cloud Run service ด้วย ไม่งั้นเบราว์เซอร์จะบล็อก:
